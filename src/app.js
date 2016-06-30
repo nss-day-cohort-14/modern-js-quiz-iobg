@@ -1,3 +1,5 @@
 "use strict";
-var calculations=require("./calculations");
+const robots=require("./DOMHandler");
+const calculations=require("./calculations");
+
 
