@@ -23,7 +23,7 @@ var createRobots= () =>{
 };
 var display = (robot) =>{
 	let toDOM="";
-	console.log(robot);
+
 	toDOM+= `<div class="name"> Model: ${robot.model}</div>`;
 	toDOM+= `<div class="name"> Type: ${robot.type}</div>`;
 	toDOM+= `<div class="name"> Robot name: ${robot.name}</div>`;

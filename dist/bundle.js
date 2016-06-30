@@ -24,7 +24,7 @@ var createRobots= () =>{
 };
 var display = (robot) =>{
 	let toDOM="";
-	console.log(robot);
+
 	toDOM+= `<div class="name"> Model: ${robot.model}</div>`;
 	toDOM+= `<div class="name"> Type: ${robot.type}</div>`;
 	toDOM+= `<div class="name"> Robot name: ${robot.name}</div>`;
@@ -39,11 +39,8 @@ module.exports=display;
 
 },{"./calculations":3,"./robots":4}],2:[function(require,module,exports){
 "use strict";
-
 const robots=require("./DOMHandler");
 const calculations=require("./calculations");
-
-
 
 
 },{"./DOMHandler":1,"./calculations":3}],3:[function(require,module,exports){
@@ -72,16 +69,17 @@ module.exports={setRobots};
 function Robot(){
 	this.model=null;
 	this.broken=false;
-
-	this.determineDamage=(min,max)=>{
-		return Math.floor(Math.random() *(max-min) +min);
-
-	};
-	this.setHP=(min,max)=>{
-		return Math.floor(Math.random() *(max-min) +min);
-
-	};
 }
+
+Robot.prototype.determineDamage=(min,max)=>{
+		return Math.floor(Math.random() *(max-min) +min);
+
+	};
+Robot.prototype.setHP=(min,max)=>{
+		return Math.floor(Math.random() *(max-min) +min);
+
+	};
+
 
 function Biped(){
 	this.type="Biped";
@@ -127,6 +125,7 @@ function Wolf(name){
 	this.HP= this.setHP(40,60);
 	this.minDmg =10;
 	this.maxDmg =16;
+	this.name=name;
 	this.model="Wolf";
 
 
@@ -137,6 +136,7 @@ function Bear(name){
 	this.HP= this.setHP(100,120);
 	this.minDmg =2;
 	this.maxDmg =17;
+	this.name=name;
 	this.model="Bear";
 
 
@@ -163,8 +163,6 @@ function Plane(name){
 	this.maxDmg =25;
 	this.name=name;
 	this.model="Plane";
-
-
 }
 
 Plane.prototype = new Drone();
