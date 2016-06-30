@@ -1,5 +1,6 @@
 "use strict";
 function Robot(){
+	this.model=null;
 	this.broken=false;
 
 	this.determineDamage=(min,max)=>{
@@ -13,17 +14,17 @@ function Robot(){
 }
 
 function Biped(){
-	this.armored=true;
+	this.type="Biped";
 }
 Biped.prototype=new Robot();
 
 function Quadruped(){
-	this.agile=true;
+	this.type="Quadruped";
 }
 Quadruped.prototype=new Robot();
 
 function Drone(){
-	this.flying=true;
+	this.type="Drone";
 }
 Drone.prototype= new Robot();
 
@@ -34,6 +35,7 @@ function Humanoid(name){
 	this.minDmg =8;
 	this.maxDmg =12;
 	this.name=name;
+	this.model="Humanoid";
 
 }
 Humanoid.prototype=new Biped();
@@ -43,6 +45,8 @@ function Giant(name){
 	this.minDmg =2;
 	this.maxDmg =15;
 	this.name=name;
+	this.model="Giant";
+
 
 }
 Giant.prototype= new Biped();
@@ -53,7 +57,8 @@ function Wolf(name){
 	this.HP= this.setHP(40,60);
 	this.minDmg =10;
 	this.maxDmg =16;
-	this.name=name;
+	this.model="Wolf";
+
 
 }
 Wolf.prototype= new Quadruped();
@@ -62,7 +67,8 @@ function Bear(name){
 	this.HP= this.setHP(100,120);
 	this.minDmg =2;
 	this.maxDmg =17;
-	this.name=name;
+	this.model="Bear";
+
 
 }
 Bear.prototype= new Quadruped();
@@ -74,6 +80,8 @@ function Helicopter(name){
 	this.minDmg =15;
 	this.maxDmg =17;
 	this.name=name;
+	this.model="Helicopter";
+
 
 }
 
@@ -84,6 +92,8 @@ function Plane(name){
 	this.minDmg =1;
 	this.maxDmg =25;
 	this.name=name;
+	this.model="Plane";
+
 
 }
 

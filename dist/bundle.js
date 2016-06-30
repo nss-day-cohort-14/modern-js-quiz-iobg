@@ -17,30 +17,48 @@ for(let key in robots){
 var createRobots= () =>{
 	var robot1 = new robots[select1[0].value](name1[0].value);
 	var robot2 = new robots[select2[0].value](name2[0].value);
+	robot1.value=1;
+	robot2.value=2;
 	calculations.setRobots(robot1,robot2);
 	
+};
+var display = (robot) =>{
+	let toDOM="";
+	console.log(robot);
+	toDOM+= `<div class="name"> Model: ${robot.model}</div>`;
+	toDOM+= `<div class="name"> Type: ${robot.type}</div>`;
+	toDOM+= `<div class="name"> Robot name: ${robot.name}</div>`;
+	toDOM+= `<div class="hp"> HP: ${robot.HP}</div>`;
+	$(`#display${robot.value}`).html(toDOM);
 };
 
 createBtn.click(createRobots);
 
+module.exports=display;
 
 
 },{"./calculations":3,"./robots":4}],2:[function(require,module,exports){
 "use strict";
+
 const robots=require("./DOMHandler");
 const calculations=require("./calculations");
 
 
 
+
 },{"./DOMHandler":1,"./calculations":3}],3:[function(require,module,exports){
 "use strict";
+
 let robot1;
 let robot2;
 
+
 var setRobots=(r1,r2)=>{
+const display = require("./DOMHandler");
 robot1=r1;
 robot2=r2;
-console.log(robot1,robot2);
+display(r1);
+display(r2);
 };
 
 
@@ -49,9 +67,10 @@ console.log(robot1,robot2);
 module.exports={setRobots};
 
 
-},{}],4:[function(require,module,exports){
+},{"./DOMHandler":1}],4:[function(require,module,exports){
 "use strict";
 function Robot(){
+	this.model=null;
 	this.broken=false;
 
 	this.determineDamage=(min,max)=>{
@@ -65,17 +84,17 @@ function Robot(){
 }
 
 function Biped(){
-	this.armored=true;
+	this.type="Biped";
 }
 Biped.prototype=new Robot();
 
 function Quadruped(){
-	this.agile=true;
+	this.type="Quadruped";
 }
 Quadruped.prototype=new Robot();
 
 function Drone(){
-	this.flying=true;
+	this.type="Drone";
 }
 Drone.prototype= new Robot();
 
@@ -86,6 +105,7 @@ function Humanoid(name){
 	this.minDmg =8;
 	this.maxDmg =12;
 	this.name=name;
+	this.model="Humanoid";
 
 }
 Humanoid.prototype=new Biped();
@@ -95,6 +115,8 @@ function Giant(name){
 	this.minDmg =2;
 	this.maxDmg =15;
 	this.name=name;
+	this.model="Giant";
+
 
 }
 Giant.prototype= new Biped();
@@ -105,7 +127,8 @@ function Wolf(name){
 	this.HP= this.setHP(40,60);
 	this.minDmg =10;
 	this.maxDmg =16;
-	this.name=name;
+	this.model="Wolf";
+
 
 }
 Wolf.prototype= new Quadruped();
@@ -114,7 +137,8 @@ function Bear(name){
 	this.HP= this.setHP(100,120);
 	this.minDmg =2;
 	this.maxDmg =17;
-	this.name=name;
+	this.model="Bear";
+
 
 }
 Bear.prototype= new Quadruped();
@@ -126,6 +150,8 @@ function Helicopter(name){
 	this.minDmg =15;
 	this.maxDmg =17;
 	this.name=name;
+	this.model="Helicopter";
+
 
 }
 
@@ -136,6 +162,8 @@ function Plane(name){
 	this.minDmg =1;
 	this.maxDmg =25;
 	this.name=name;
+	this.model="Plane";
+
 
 }
 
