@@ -1,9 +1,15 @@
 "use strict";
 const robots= require("./robots");
+const weapons = require("./weapons");
+const modifications=require("./modifications");
 const calculations=require("./calculations");
 
 let select1=$("#robot1");
 let select2=$("#robot2");
+let weapon1=$("#weapon1");
+let weapon2=$("#weapon2");
+let mod1=$("#mod1");
+let mod2=$("#mod2");
 let name1=$("#name1");
 let name2=$("#name2");
 let createBtn=$("#create");
@@ -12,6 +18,14 @@ let battleGround=$("#battleground");
 for(let key in robots){
 	select1.append(`<option value="${key}">${key}</option>`);
 	select2.append(`<option value="${key}">${key}</option>`);
+}
+for(let key in weapons){
+	weapon1.append(`<option value="${key}">${key}</option>`);
+	weapon2.append(`<option value="${key}">${key}</option>`);
+}
+for(let key in modifications){
+	mod1.append(`<option value="${key}">${key}</option>`);
+	mod2.append(`<option value="${key}">${key}</option>`);
 }
 
 
@@ -37,8 +51,8 @@ var addAtkBtn = ()=>{
 	battleGround.append(`<input type="button" id="attackBtn" value="Attack!">`);
 };
 var battleMessage=(attacker,defender,damageDone)=>{
-	let message=$(`${attacker.name} hit ${defender.name} for ${damageDone} damage!`);
-	battleGround.append(message);
+	let message=(`${attacker.name} hit ${defender.name} for ${damageDone} damage!`);
+	$("#battleText").html(message);
 
 };
 

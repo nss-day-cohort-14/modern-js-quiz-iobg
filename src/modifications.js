@@ -1,44 +1,44 @@
 "use strict";
 var modifications={};
-var Modification=()=>{
+var Modification=function(){
 	this.evasion=0;
 	this.HPBonus=0;
 	this.damageBonus=0;
 };
 
-modifications.Armor=()=>{
+modifications.Armor=function(){
 	this.HPBonus=20;
 };
 
 modifications.Armor.prototype = new Modification();
 
-modifications.Camoflage=()=>{
+modifications.Camoflage=function(){
 	this.evasion=10;
 };
 
 modifications.Camoflage.prototype= new Modification();
 
-modifications.RazorWire=()=>{
+modifications.RazorWire=function(){
 	this.damageBonus=5;
 };
 
 modifications.RazorWire.prototype= new Modification();
 
-modifications.ThornArmor=()=>{
+modifications.ThornArmor=function(){
 	this.HPbonus=10;
 	this.damageBonus=2;
 };
 
-modifications.thornArmor.prototype=new Modification();
+modifications.ThornArmor.prototype=new Modification();
 
-modifications.Robe=()=>{
+modifications.Robe=function(){
 	this.evasion=5;
 	this.HPBonus=10;
 };
 
 modifications.Robe.prototype=new Modification();
 
-modifications.Goggles=()=>{
+modifications.Goggles=function(){
 	this.evasion=5;
 	this.damageBonus=2;
 };
