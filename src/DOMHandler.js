@@ -32,6 +32,10 @@ for(let key in modifications){
 var createRobots= () =>{
 	var robot1 = new robots[select1[0].value](name1[0].value);
 	var robot2 = new robots[select2[0].value](name2[0].value);
+	robot1.weapon= new weapons[weapon1[0].value]();
+	robot2.weapon= new weapons[weapon2[0].value]();
+	robot1.modification= new modifications[mod1[0].value]();
+	robot2.modification= new modifications[mod2[0].value]();
 	robot1.value=1;
 	robot2.value=2;
 	calculations.setRobots(robot1,robot2);
@@ -43,6 +47,7 @@ var display = (robot) =>{
 	toDOM+= `<div class="name"> Type: ${robot.type}</div>`;
 	toDOM+= `<div class="name"> Robot name: ${robot.name}</div>`;
 	toDOM+= `<div class="hp"> HP: ${robot.HP}</div>`;
+	toDOM+= `<div class="weapon"> Weapon: ${robot.weapon.name}</div>`;
 	$(`#display${robot.value}`).html(toDOM);
 	
 	

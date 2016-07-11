@@ -30,7 +30,9 @@ var turnFinder=()=>{
 };
 
 var getRandomDamage=(robot)=>{
-return Math.floor(Math.random()*(robot.maxDmg-robot.minDmg +1)+robot.minDmg);
+	var max = robot.maxDmg + robot.weapon.maxBonus;
+	var min = robot.minDmg + robot.weapon.minBonus;
+return Math.floor(Math.random()*(max - min +1)+ min);
 };
 
 var damageCalculation=(attacker,defender)=>{
