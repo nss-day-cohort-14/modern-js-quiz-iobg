@@ -56,7 +56,7 @@ var addAtkBtn = ()=>{
 	battleGround.append(`<input type="button" id="attackBtn" value="Attack!">`);
 };
 var battleMessage=(attacker,defender,damageDone)=>{
-	let message=(`${attacker.name} hit ${defender.name} for ${damageDone} damage!`);
+	let message=(`${attacker.name} hit ${defender.name} with ${attacker.weapon.name} for ${damageDone} damage!`);
 	$("#battleText").html(message);
 
 };
