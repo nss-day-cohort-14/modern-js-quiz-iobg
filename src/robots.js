@@ -81,8 +81,6 @@ function Helicopter(name){
 	this.maxDmg =17;
 	this.name=name;
 	this.model="Helicopter";
-
-
 }
 
 Helicopter.prototype = new Drone();

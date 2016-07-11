@@ -15,8 +15,6 @@ var setRobots=(r1,r2)=>{
 	$("#attackBtn").click(turnFinder);
 };
 
-
-
 var turnFinder=()=>{
 	if(robot1.attackingNow){
 		damageCalculation(robot1,robot2);
@@ -26,7 +24,6 @@ var turnFinder=()=>{
 		damageCalculation(robot2,robot1);
 		robot1.attackingNow=true;
 	}
-
 };
 
 var getRandomDamage=(robot)=>{
@@ -36,13 +33,24 @@ return Math.floor(Math.random()*(max - min +1)+ min);
 };
 
 var damageCalculation=(attacker,defender)=>{
-	var damageDone = getRandomDamage(attacker);
-	defender.HP-=damageDone;
-	DOM.battleMessage(attacker,defender,damageDone);
-	DOM.display(defender);
+	var damageDone = getRandomDamage(attacker) + attacker.modification.damageBonus;
+	if(checkHit(defender)){
+		defender.HP-=damageDone;
+		DOM.battleMessage(attacker,defender,damageDone);
+		DOM.display(defender);
+	}
+	else DOM.missMessage(attacker);
+
 	if(defender.HP <=0){
 		$("#battleground").html(`<div id="gameover"> GAME OVER ${attacker.name} wins!</div>`);
 	}
+};
+
+var checkHit=(defender)=>{
+	if(Math.random()*100 > defender.modification.evasion){
+		return true;
+	}
+	else return false;
 };
 
 

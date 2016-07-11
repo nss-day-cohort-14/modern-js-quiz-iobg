@@ -36,6 +36,8 @@ var createRobots= () =>{
 	robot2.weapon= new weapons[weapon2[0].value]();
 	robot1.modification= new modifications[mod1[0].value]();
 	robot2.modification= new modifications[mod2[0].value]();
+	robot1.HP+=robot1.modification.HPBonus;
+	robot2.HP+=robot2.modification.HPBonus;
 	robot1.value=1;
 	robot2.value=2;
 	calculations.setRobots(robot1,robot2);
@@ -58,11 +60,14 @@ var addAtkBtn = ()=>{
 var battleMessage=(attacker,defender,damageDone)=>{
 	let message=(`${attacker.name} hit ${defender.name} with ${attacker.weapon.name} for ${damageDone} damage!`);
 	$("#battleText").html(message);
+};
+var missMessage=(attacker)=>{
+	$("#battleText").html(`${attacker.name} misssed!`);
 
 };
 
 
 createBtn.click(createRobots);
 
-module.exports={display,addAtkBtn,battleMessage};
+module.exports={display,addAtkBtn,battleMessage,missMessage};
 
