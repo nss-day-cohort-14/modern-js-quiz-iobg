@@ -52,7 +52,6 @@ var display = (robot) =>{
 	toDOM+= `<div class="weapon"> Weapon: ${robot.weapon.name}</div>`;
 	$(`#display${robot.value}`).html(toDOM);
 	
-	
 };
 var addAtkBtn = ()=>{
 	battleGround.append(`<input type="button" id="attackBtn" value="Attack!">`);
@@ -62,10 +61,9 @@ var battleMessage=(attacker,defender,damageDone)=>{
 	$("#battleText").html(message);
 };
 var missMessage=(attacker)=>{
-	$("#battleText").html(`${attacker.name} misssed!`);
+	$("#battleText").html(`${attacker.name} missed!`);
 
 };
-
 
 createBtn.click(createRobots);
 

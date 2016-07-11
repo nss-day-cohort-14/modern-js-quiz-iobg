@@ -10,7 +10,6 @@ Robot.prototype.setHP=(min,max)=>{
 
 	};
 
-
 function Biped(){
 	this.type="Biped";
 }
@@ -45,7 +44,6 @@ function Giant(name){
 	this.name=name;
 	this.model="Giant";
 
-
 }
 Giant.prototype= new Biped();
 
@@ -58,7 +56,6 @@ function Wolf(name){
 	this.name=name;
 	this.model="Wolf";
 
-
 }
 Wolf.prototype= new Quadruped();
 
@@ -68,7 +65,6 @@ function Bear(name){
 	this.maxDmg =17;
 	this.name=name;
 	this.model="Bear";
-
 
 }
 Bear.prototype= new Quadruped();
