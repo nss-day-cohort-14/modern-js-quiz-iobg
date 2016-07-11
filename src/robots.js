@@ -2,12 +2,9 @@
 function Robot(){
 	this.model=null;
 	this.broken=false;
+	this.attackingNow=false;
 }
 
-Robot.prototype.determineDamage=(min,max)=>{
-		return Math.floor(Math.random() *(max-min) +min);
-
-	};
 Robot.prototype.setHP=(min,max)=>{
 		return Math.floor(Math.random() *(max-min) +min);
 

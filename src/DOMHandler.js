@@ -1,11 +1,13 @@
 "use strict";
 const robots= require("./robots");
 const calculations=require("./calculations");
+
 let select1=$("#robot1");
 let select2=$("#robot2");
 let name1=$("#name1");
 let name2=$("#name2");
 let createBtn=$("#create");
+let battleGround=$("#battleground");
 
 for(let key in robots){
 	select1.append(`<option value="${key}">${key}</option>`);
@@ -23,15 +25,25 @@ var createRobots= () =>{
 };
 var display = (robot) =>{
 	let toDOM="";
-
 	toDOM+= `<div class="name"> Model: ${robot.model}</div>`;
 	toDOM+= `<div class="name"> Type: ${robot.type}</div>`;
 	toDOM+= `<div class="name"> Robot name: ${robot.name}</div>`;
 	toDOM+= `<div class="hp"> HP: ${robot.HP}</div>`;
 	$(`#display${robot.value}`).html(toDOM);
+	
+	
 };
+var addAtkBtn = ()=>{
+	battleGround.append(`<input type="button" id="attackBtn" value="Attack!">`);
+};
+var battleMessage=(attacker,defender,damageDone)=>{
+	let message=$(`${attacker.name} hit ${defender.name} for ${damageDone} damage!`);
+	battleGround.append(message);
+
+};
+
 
 createBtn.click(createRobots);
 
-module.exports=display;
+module.exports={display,addAtkBtn,battleMessage};
 
