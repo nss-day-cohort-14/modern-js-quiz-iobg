@@ -33,9 +33,9 @@ return Math.floor(Math.random()*(max - min +1)+ min);
 };
 
 var damageCalculation=(attacker,defender)=>{
-	var damageDone = getRandomDamage(attacker) + attacker.modification.damageBonus;
+	var damageDone = getRandomDamage(attacker) + attacker.modification.damageBonus + attacker.damageBonus;
 	if(checkHit(defender)){
-		defender.HP-=damageDone;
+		defender.HP-= (damageDone - defender.armor);
 		DOM.battleMessage(attacker,defender,damageDone);
 		DOM.display(defender);
 	}
@@ -47,7 +47,7 @@ var damageCalculation=(attacker,defender)=>{
 };
 
 var checkHit=(defender)=>{
-	if(Math.random()*100 > defender.modification.evasion){
+	if(Math.random()*100 > (defender.modification.evasion + defender.evasion)){
 		return true;
 	}
 	else return false;

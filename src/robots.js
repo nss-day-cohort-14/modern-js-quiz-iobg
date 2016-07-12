@@ -1,8 +1,10 @@
 "use strict";
 function Robot(){
 	this.model=null;
-	this.broken=false;
 	this.attackingNow=false;
+	this.armor=0;
+	this.damageBonus=0;
+	this.evasion=0;
 }
 
 Robot.prototype.setHP=(min,max)=>{
@@ -12,16 +14,19 @@ Robot.prototype.setHP=(min,max)=>{
 
 function Biped(){
 	this.type="Biped";
+	this.armor=5;
 }
 Biped.prototype=new Robot();
 
 function Quadruped(){
 	this.type="Quadruped";
+	this.damageBonus=2;
 }
 Quadruped.prototype=new Robot();
 
 function Drone(){
 	this.type="Drone";
+	this.evasion=5;
 }
 Drone.prototype= new Robot();
 
