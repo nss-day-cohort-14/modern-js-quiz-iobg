@@ -1,0 +1,1 @@
+{"/Users/iobg/workspace/quizzes/modern-js-quiz-iobg/gulpfile.js":{"sha1":"555d99431374d01686783d7a1d5e975083470097","tasks":{"browserify":{"name":"browserify","dependencies":""},"lint":{"name":"lint","dependencies":""},"watch":{"name":"watch","dependencies":""},"default":{"name":"default","dependencies":"lint watch"}}}}
